@@ -1,0 +1,15 @@
+# security.txt for alizain.pk
+# Format per RFC 9116 — https://www.rfc-editor.org/rfc/rfc9116
+
+Contact: mailto:contact@alizain.pk
+Contact: https://linkedin.com/in/alizainmalik/
+Expires: 2027-08-07T23:59:00.000Z
+Preferred-Languages: en
+Canonical: https://www.alizain.pk/security.txt
+Canonical: https://www.alizain.pk/.well-known/security.txt
+
+# This is a personal portfolio site with no user accounts, payments,
+# or sensitive data processing. If you believe you've found a genuine
+# security issue (e.g. XSS, exposed files, misconfiguration), please
+# report it by email above. Please act in good faith and avoid data
+# destruction, privacy violations, or service disruption while testing.

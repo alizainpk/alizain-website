@@ -1,0 +1,32 @@
+{
+  "name": "Ali Zain | IT Infrastructure & Systems Administration",
+  "short_name": "Ali Zain",
+  "description": "Official website of Ali Zain, IT Infrastructure & Systems Administration professional based in Lahore, Pakistan.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "background_color": "#0A1220",
+  "theme_color": "#0A1220",
+  "icons": [
+    {
+      "src": "/assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

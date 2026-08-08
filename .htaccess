@@ -1,0 +1,74 @@
+# ============================================================
+# Ali Zain — www.alizain.pk
+# Apache configuration — only used if this site is ever hosted
+# on Apache/cPanel. GitHub Pages does not run Apache, so it
+# ignores this file completely and it does no harm sitting in
+# the repo. Clean URLs work on GitHub Pages because each page
+# lives in its own folder as index.html (e.g. /experience/index.html),
+# which every static host — Apache included — serves automatically
+# for a request to /experience/. No rewrite rules are required for
+# that anymore; this file only adds the extras below.
+# ============================================================
+
+# ---- Default document ----
+DirectoryIndex index.html
+
+# ---- Force HTTPS + force www (matches canonical https://www.alizain.pk/) ----
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Force www
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ---- Custom error page ----
+ErrorDocument 404 /404.html
+
+# ---- Prevent directory listing ----
+Options -Indexes
+
+# ---- Protect sensitive files ----
+<FilesMatch "^(\.htaccess|\.htpasswd|README\.txt)$">
+  Require all denied
+</FilesMatch>
+
+# ---- Security headers ----
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+</IfModule>
+
+# ---- GZIP compression ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+</IfModule>
+
+# ---- Browser caching ----
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css                "access plus 1 month"
+  ExpiresByType application/javascript   "access plus 1 month"
+  ExpiresByType image/png                "access plus 1 year"
+  ExpiresByType image/jpeg               "access plus 1 year"
+  ExpiresByType image/webp               "access plus 1 year"
+  ExpiresByType image/x-icon             "access plus 1 year"
+  ExpiresByType image/svg+xml            "access plus 1 year"
+  ExpiresByType application/pdf          "access plus 1 month"
+  ExpiresByType text/html                "access plus 0 seconds"
+  ExpiresByType application/manifest+json "access plus 1 week"
+</IfModule>
+
+# ---- Correct MIME type for webmanifest ----
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+</IfModule>

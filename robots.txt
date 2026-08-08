@@ -1,0 +1,7 @@
+# alizain.pk — robots.txt
+# Everything on this site is public and fine to index.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.alizain.pk/sitemap.xml
